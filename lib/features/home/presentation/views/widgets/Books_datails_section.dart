@@ -42,6 +42,8 @@ class BooksDatailsSection extends StatelessWidget {
         ),
         BookRate(
           mainAxisAlignment: MainAxisAlignment.center,
+          rate: 5,
+          count: 5,
         ),
         SizedBox(
           height: 37,

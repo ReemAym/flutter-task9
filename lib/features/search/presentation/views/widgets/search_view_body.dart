@@ -1,3 +1,6 @@
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
+import 'package:bookly_app/features/home/data/models/book_model/image_links.dart';
+import 'package:bookly_app/features/home/data/models/book_model/volume_info.dart';
 import 'package:bookly_app/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -45,7 +48,12 @@ class SearchResultListView extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
-            child: BookListviewItem(),
+            child: BookListviewItem(
+              bookModel: BookModel(
+                  volumeInfo: VolumeInfo(
+                      imageLinks: ImageLinks(
+                          smallThumbnail: '', thumbnail: 'thumbnail'))),
+            ),
           );
         });
   }

@@ -2,7 +2,14 @@ import 'package:bookly_app/styles.dart';
 import 'package:flutter/material.dart';
 
 class BookRate extends StatelessWidget {
-  const BookRate({super.key, this.mainAxisAlignment = MainAxisAlignment.start});
+  const BookRate(
+      {super.key,
+      this.mainAxisAlignment = MainAxisAlignment.start,
+      required this.rate,
+      required this.count});
+
+  final num rate;
+  final int count;
 
   final MainAxisAlignment mainAxisAlignment;
   @override
@@ -19,14 +26,14 @@ class BookRate extends StatelessWidget {
           width: 6.3,
         ),
         Text(
-          '4.5',
+          '$rate',
           style: Styles.textStyle16,
         ),
         SizedBox(
           width: 5,
         ),
         Text(
-          '(4560)',
+          '($count)',
           style: Styles.textStyle14.copyWith(
             color: Color(0xff707070),
           ),
