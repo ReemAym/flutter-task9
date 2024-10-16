@@ -24,7 +24,7 @@ class BookListviewItem extends StatelessWidget {
           child: SizedBox(
               height: 125,
               child: CustomBookImage(
-                  imageURL: bookModel.volumeInfo.imageLinks!.thumbnail)
+                  imageURL: bookModel.volumeInfo.imageLinks?.thumbnail ?? '')
 
               // AspectRatio(
               //   aspectRatio: 1.7 / 3,
