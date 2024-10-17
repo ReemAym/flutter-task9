@@ -50,7 +50,9 @@ class BooksDatailsSection extends StatelessWidget {
         SizedBox(
           height: 37,
         ),
-        BooksAction(),
+        BooksAction(
+          bookModel: bookModel,
+        ),
       ],
     );
   }
