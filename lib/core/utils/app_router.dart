@@ -8,6 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/home/presentation/manager/similar_books_cubit/similar_books_cubit.dart';
+import '../../features/search/data/repos/search_repo_imp.dart';
+import '../../features/search/presentation/manager/search_books_cubit/search_books_cubit.dart';
 import '../../features/splash/presentation/views/splash_view.dart';
 
 abstract class AppRouter {
@@ -35,7 +37,10 @@ abstract class AppRouter {
     GoRoute(
         path: KSearchView,
         builder: (context, state) {
-          return SearchView();
+          return BlocProvider(
+              create: (context) =>
+                  SearchBooksCubit(get_it.get<SearchRepoImp>()),
+              child: const SearchView());
         }),
   ]);
 }

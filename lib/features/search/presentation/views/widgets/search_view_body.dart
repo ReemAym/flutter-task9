@@ -1,11 +1,10 @@
-import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
-import 'package:bookly_app/features/home/data/models/book_model/image_links.dart';
-import 'package:bookly_app/features/home/data/models/book_model/volume_info.dart';
 import 'package:bookly_app/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/widgets/book_listview_item.dart';
+import '../../manager/search_books_cubit/search_books_cubit.dart';
 import 'custom_search_textfield.dart';
+import 'search_result.dart';
 
 class SearchViewBody extends StatelessWidget {
   const SearchViewBody({super.key});
@@ -17,44 +16,27 @@ class SearchViewBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomSearchTextField(),
-          SizedBox(
+          CustomSearchTextField(
+            onSearch: (value) {
+              BlocProvider.of<SearchBooksCubit>(context)
+                  .feachSearchBooks(searchKey: value);
+            },
+          ),
+          const SizedBox(
             height: 30,
           ),
-          Text(
+          const Text(
             'Search results',
             style: Styles.textStyle18,
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
-          Expanded(
+          const Expanded(
             child: SearchResultListView(),
           ),
         ],
       ),
     );
-  }
-}
-
-class SearchResultListView extends StatelessWidget {
-  const SearchResultListView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-        padding: EdgeInsets.zero,
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: BookListviewItem(
-              bookModel: BookModel(
-                  volumeInfo: VolumeInfo(
-                      imageLinks: ImageLinks(
-                          smallThumbnail: '', thumbnail: 'thumbnail'))),
-            ),
-          );
-        });
   }
 }
