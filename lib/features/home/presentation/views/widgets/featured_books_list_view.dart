@@ -14,7 +14,7 @@ class FeaturedBooksListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<FeaturedBooksCubit, FeaturedBooksState>(
         builder: (context, state) {
-      if (state is FeaturedBooksSuccess)
+      if (state is FeaturedBooksSuccess) {
         return SizedBox(
           height: MediaQuery.of(context).size.height * .25,
           child: ListView.builder(
@@ -36,10 +36,11 @@ class FeaturedBooksListView extends StatelessWidget {
                 );
               }),
         );
-      else if (state is FeaturedBooksFailure)
+      } else if (state is FeaturedBooksFailure) {
         return CustomError(erroMsg: state.error);
-      else
+      } else {
         return CustomLoadingIndicator();
+      }
     });
   }
 }

@@ -1,6 +1,7 @@
 import 'package:bookly_app/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../manager/search_books_cubit/search_books_cubit.dart';
 import 'custom_search_textfield.dart';
@@ -16,6 +17,15 @@ class SearchViewBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          IconButton(
+            icon: Icon(Icons.close),
+            onPressed: () {
+              GoRouter.of(context).pop();
+            },
+          ),
+          SizedBox(
+            height: 20,
+          ),
           CustomSearchTextField(
             onSearch: (value) {
               BlocProvider.of<SearchBooksCubit>(context)
